@@ -4,8 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/widgets/Navbar";
 import Sidebar from "@/components/widgets/Sidebar";
 
-const geistSans = Google_Sans({
-  variable: "--font-google-sans",
+const googleSans = Google_Sans({
   subsets: ["latin"],
 });
 
@@ -22,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} relative min-h-screen antialiased`}
+        className={`${googleSans.className} relative min-h-screen antialiased`}
       >
         <Navbar />
         <Sidebar />
