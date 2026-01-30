@@ -11,28 +11,11 @@ import {
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
-
-export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"> {
-  width?: number
-  height?: number
-  x?: number
-  y?: number
-  strokeDasharray?: number
-  numSquares?: number
-  maxOpacity?: number
-  duration?: number
-  repeatDelay?: number
-}
-
-type Square = {
-  id: number
-  pos: [number, number]
-  iteration: number
-}
+import { AnimatedGridPatternProps } from "@/types/interfaces"
 
 export function AnimatedGridPattern({
-  width = 40,
-  height = 40,
+  width = 50,
+  height = 50,
   x = -1,
   y = -1,
   strokeDasharray = 0,
