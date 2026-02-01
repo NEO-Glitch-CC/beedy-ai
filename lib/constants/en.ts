@@ -6,6 +6,14 @@ import NvidiaLogo from "../../assets/icons/nvidia-logo.svg"
 import PrismaLogo from "../../assets/icons/prisma-logo.svg"
 import SupabaseLogo from "../../assets/icons/supabase-logo.svg"
 
+export const HERO_SECTION_EN = {
+  title: "Revolutionize Your Interactions with Beedy AI",
+  description: "Our AI-powered chatbot provides round-the-clock support, answering customer queries instantly and reducing response times. Easily integrate our chatbot with your existing platforms and workflows.",
+  button: "Get Started",
+  button2: "Read Docs",
+  supports: "Supported by many well-known companies"
+};
+
 export const FEATURES_EN = [
   {
     title: "24/7 Automated Support",
