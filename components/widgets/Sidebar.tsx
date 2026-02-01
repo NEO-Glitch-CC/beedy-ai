@@ -15,6 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
+  // Build timeline once
   useEffect(() => {
     tlRef.current = gsap.timeline({ paused: true })
       .to(overlayRef.current, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' }, 0)
@@ -25,7 +26,16 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     };
   }, []);
 
+  // Responsive: only apply open/close behavior on small screens (md breakpoint)
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) {
+      // ensure no scroll lock remains on desktop
+      if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
+      document.body.style.overflow = '';
+      return;
+    }
+
     if (open) {
       if (overlayRef.current) overlayRef.current.style.pointerEvents = 'auto';
       tlRef.current?.play();
@@ -41,6 +51,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     }
   }, [open]);
 
+  // ensure body overflow is reset on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+      if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
+    };
+  }, []);
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -51,8 +69,8 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
 
   return (
     <div className="md:hidden">
-      <div ref={overlayRef} onClick={onClose} className="fixed inset-0 bg-black/40 opacity-0 pointer-events-none" />
-      <aside ref={panelRef} className="fixed left-0 top-0 bottom-0 w-72 bg-white shadow-xl -translate-x-full" aria-hidden={!open}>
+      <div ref={overlayRef} onClick={onClose} className="fixed inset-0 bg-black/40 opacity-0 pointer-events-none z-40" />
+      <aside ref={panelRef} className="fixed left-0 top-0 bottom-0 w-72 bg-white shadow-xl transform z-50" aria-hidden={!open}>
         <div className="p-4 border-b flex items-center justify-between">
           <div className="font-semibold">Menu</div>
           <button aria-label="Close menu" onClick={onClose}><X /></button>

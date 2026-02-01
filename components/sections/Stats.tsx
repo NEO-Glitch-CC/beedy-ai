@@ -34,13 +34,9 @@ const dotSize = 8;
 const Stats = () => {
   const section = STATS_SECTION_EN;
   const [activeYear, setActiveYear] = useState(1);
-
   const year = section.years[activeYear];
-
-  // simple count-up only for numeric looking values, fallback to strings
   const parsedNumbers = useMemo(() => {
     return year.items.map((it) => {
-      // try to parse a numeric value from string like '120k+' or '2.8M' or '300%'
       const raw = String(it.value);
       if (/\d+(\.\d+)?M/.test(raw)) {
         return Math.round(parseFloat(raw) * 1000000);
@@ -60,20 +56,14 @@ const Stats = () => {
   }, [year]);
 
   const counts = parsedNumbers.map((n) => useCount(n));
-
-  // metric selector: teams | growth | customers | revenue
   const metricKeys = [
     { key: 'teams', label: 'Team Members' },
     { key: 'growth', label: 'Company Growth' },
     { key: 'customers', label: 'New Customers' },
     { key: 'revenue', label: 'Revenue' },
   ] as const;
-
   const [selectedMetric, setSelectedMetric] = useState<typeof metricKeys[number]['key']>('customers');
-
-  // build chart data from timeline
   const chartData = (year.timeline || []).map((pt) => ({ name: pt.label, value: (pt as any)[selectedMetric] ?? 0 }));
-
   const values = chartData.map((d) => d.value);
   const maxVal = Math.max(...values, 1);
   const yDomain: [number, number] = [0, Math.ceil(maxVal * 1.15)];
@@ -89,11 +79,9 @@ const Stats = () => {
       if (value >= 1000) return `${Math.round(value / 1000)}k`;
       return `${value}`;
     }
-    // revenue as approximate
     return `~${value}+`;
   }
 
-  // formatted counts from numeric values
   const countsFormatted = year.items.map((it, idx) => {
     const n = typeof it.value === 'number' ? it.value : parseInt(String(it.value).replace(/[^0-9]/g, ''), 10) || 0;
     return formatStat(it.label, counts[idx] || n);
@@ -150,7 +138,6 @@ const Stats = () => {
 
           <div className="md:col-span-5">
             <div className="relative rounded-lg p-6 border">
-              {/* Recharts chart using shadcn Chart container */}
               <ChartContainer id="stats" config={{ value: { label: 'Trend', color: '#ff8a4c' } }} className="h-full">
                 <LineChart data={chartData} margin={{ top: 6, right: 6, left: 12, bottom: 6 }}>
                   <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#ebebeb" />

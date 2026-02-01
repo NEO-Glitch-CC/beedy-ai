@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Google_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/widgets/Navbar";
-import Sidebar from "@/components/widgets/Sidebar";
+import Shell from "@/components/widgets/Shell";
 
 const googleSans = Google_Sans({
   subsets: ["latin"],
@@ -23,11 +22,7 @@ export default function RootLayout({
       <body
         className={`${googleSans.className} relative min-h-screen antialiased`}
       >
-        <Navbar />
-        <Sidebar />
-        <main className="">
-          {children}
-        </main>
+        <Shell>{children}</Shell>
       </body>
     </html>
   );
