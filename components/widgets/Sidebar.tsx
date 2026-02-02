@@ -15,7 +15,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-  // Build timeline once
   useEffect(() => {
     tlRef.current = gsap.timeline({ paused: true })
       .to(overlayRef.current, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' }, 0)
@@ -26,11 +25,9 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     };
   }, []);
 
-  // Responsive: only apply open/close behavior on small screens (md breakpoint)
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (!isMobile) {
-      // ensure no scroll lock remains on desktop
       if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
       document.body.style.overflow = '';
       return;
@@ -42,7 +39,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
       document.body.style.overflow = 'hidden';
     } else {
       tlRef.current?.reverse();
-      // ensure overlay doesn't intercept clicks when closed after animation
       const t = setTimeout(() => {
         if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
       }, 350);
@@ -51,7 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     }
   }, [open]);
 
-  // ensure body overflow is reset on unmount
   useEffect(() => {
     return () => {
       document.body.style.overflow = '';

@@ -103,11 +103,11 @@ const Stats = () => {
   }
 
   return (
-    <section className="py-20">
+    <section className="w-full px-[6%] sm:px-[8%] md:px-[12%] py-20">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-7">
-            <h2 className="text-4xl font-bold">{section.title}</h2>
+            <h1 className="text-5xl font-bold">{section.title}</h1>
             <p className="mt-4 text-neutral-600 max-w-xl">{section.description}</p>
 
             <div className="mt-8 flex gap-3">
@@ -137,25 +137,23 @@ const Stats = () => {
           </div>
 
           <div className="md:col-span-5">
-            <div className="relative rounded-lg p-6 border">
-              <ChartContainer id="stats" config={{ value: { label: 'Trend', color: '#ff8a4c' } }} className="h-full">
-                <LineChart data={chartData} margin={{ top: 6, right: 6, left: 12, bottom: 6 }}>
-                  <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#ebebeb" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                  <YAxis hide domain={yDomain} />
-                  <RechartsTooltip content={<CustomTooltip />} />
-                  <Line type="monotone" dataKey="value" stroke="var(--color-value)" strokeWidth={2.5} dot={{ r: 4 }} activeDot={{ r: 6 }} isAnimationActive animationDuration={600} />
-                </LineChart>
-              </ChartContainer>
-
-              {/* Year toggles */}
-              <div className="absolute right-4 top-4 flex flex-col gap-3">
+            <div className="relative rounded-xl border border-border overflow-hidden">
+              <div className="w-full flex items-center justify-between border-b border-border">
                 {section.years.map((y, i) => (
-                  <button key={y.id} onClick={() => setActiveYear(i)} aria-pressed={i === activeYear} className={`cursor-pointer px-3 py-1 rounded-full text-sm ${i === activeYear ? 'bg-neutral-900 text-white' : 'bg-neutral-100 text-neutral-700'}`}>
+                  <button key={y.id} onClick={() => setActiveYear(i)} aria-pressed={i === activeYear} className={`w-full cursor-pointer p-3 text-sm ${i === activeYear ? 'bg-neutral-100 font-medium' : 'bg-white text-neutral-700'}`}>
                     {y.label}
                   </button>
                 ))}
               </div>
+              <ChartContainer id="stats" config={{ value: { label: 'Trend', color: '#ff8a4c' } }} className="h-full p-4">
+                <LineChart data={chartData} margin={{ top: 6, right: 6, left: 12, bottom: 6 }}>
+                  <CartesianGrid vertical={false} strokeDasharray="4 4" stroke="#dfdfdf" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                  <YAxis hide domain={yDomain} />
+                  <RechartsTooltip content={<CustomTooltip />} />
+                  <Line type={"monotone"} dataKey="value" stroke="var(--color-value)" strokeWidth={2.5} dot={{ r: 4 }} activeDot={{ r: 6 }} isAnimationActive animationDuration={600} />
+                </LineChart>
+              </ChartContainer>
             </div>
           </div>
         </div>

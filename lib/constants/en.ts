@@ -298,7 +298,6 @@ export const STATS_SECTION_EN = {
         { label: 'New Customers', value: 100000000 },
         { label: 'Revenue', value: 10 },
       ],
-      // timeline across 4 quarters for each metric
       timeline: [
         { label: 'Q1', teams: 50, growth: 10, customers: 18000000, revenue: 2 },
         { label: 'Q2', teams: 120, growth: 60, customers: 42000000, revenue: 3 },

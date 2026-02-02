@@ -19,7 +19,6 @@ export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"
   repeatDelay?: number
 }
 
-// Sections & content interfaces
 export interface AboutSection {
   title: string;
   subtitle?: string;
@@ -65,27 +64,24 @@ export interface CTASection {
   ctaSecondary?: string;
 }
 
-// Stats
 export interface StatsItem {
   label: string;
-  value: number | string; // numeric or formatted (e.g., "2.8M")
+  value: number | string; 
 }
 
 export interface StatsPoint {
-  label: string; // e.g., 'Q1', 'Jan', 'P1'
+  label: string; 
   teams?: number;
-  growth?: number; // percent number like 45 => 45
-  customers?: number; // raw count
-  revenue?: number; // raw count or simplified index
+  growth?: number;
+  customers?: number;
+  revenue?: number; 
 }
 
 export interface StatsYear {
   id: string;
-  label: string; // display label e.g. "2023 - 2024"
-  items: StatsItem[]; // expect exactly 4 items in order
-  // option A: quick metrics normalized 0..1 for simple sparklines
+  label: string;
+  items: StatsItem[];
   metrics?: number[];
-  // richer timeline points for plotting real data
   timeline?: StatsPoint[];
 }
 
@@ -95,4 +91,9 @@ export interface StatsSection {
   ctaPrimary?: string;
   ctaSecondary?: string;
   years: StatsYear[];
+}
+
+export interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
 }
