@@ -44,19 +44,33 @@ export const reviews = [
 export const ABOUT_SECTION_EN = {
   title: "About Beedy AI",
   subtitle: "Deliver delightful, automated support and insights with our conversational AI platform.",
+  description: "Beedy AI is a modern conversational AI platform that helps teams automate customer support, reduce response times, and surface actionable insights from every interaction. Built on state-of-the-art language models, Beedy focuses on reliability, privacy, and seamless integration so teams can deploy assistive agents across chat, email, and internal tools without heavy engineering overhead.",
+  corePhilosophyTitle: "Core Philosophy",
+  corePhilosophy: "We believe AI should augment human expertise rather than replace it. Our mission is to make intelligent assistance accessible and trustworthy through transparent model behavior, simple integration, and operational controls that let teams tune and measure outcomes. Practicality and ethics guide our product decisions—delivering measurable value while protecting your users and data.",
   points: [
     {
       title: "24/7 Smart Support",
-      description: "Handle common customer requests instantly, reduce wait time and scale support without growing headcount.",
+      description: "Handle common customer requests instantly, reduce wait time, and scale support without growing headcount.",
     },
     {
       title: "Seamless Integration",
-      description: "Easily plug into your existing tools and channels (mail, chat, CRM) with flexible APIs and webhooks.",
+      description: "Easily plug into your existing tools and channels (mail, chat, CRM) with flexible APIs, webhooks, and pre-built connectors.",
     },
     {
       title: "Analytics & Insights",
-      description: "Track conversation performance, surface trends, and make data-driven improvements.",
+      description: "Track conversation performance, surface trends, and make data-driven improvements using our dashboard and exportable reports.",
     },
+  ],
+  closingNote: "We’re on a mission to help teams deliver faster, more thoughtful customer experiences using pragmatic, secure AI.",
+  founders: [
+    { name: "Aisha Rahman", role: "Co-founder & CEO" },
+    { name: "Marco Silva", role: "Co-founder & CTO" },
+    { name: "Dr. Lena Kovács", role: "Head of Research" },
+    { name: "Owen Park", role: "Lead ML Engineer" },
+    { name: "Priya Nair", role: "Product Lead" },
+    { name: "Diego Alvarez", role: "Engineering Manager" },
+    { name: "Maya Chen", role: "Design Lead" },
+    { name: "Ravi Patel", role: "Customer Success Lead" },
   ],
 };
 
