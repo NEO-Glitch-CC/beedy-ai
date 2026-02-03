@@ -13,7 +13,7 @@ const FAQ = () => {
   const currentItems = categories[categoryIndex].items;
 
   return (
-    <section className="py-20">
+    <section className="w-full px-[6%] sm:px-[8%] md:px-[12%] space-y-6 py-20">
       <div className="container mx-auto px-6">
         <motion.h2 initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-3xl font-bold">Frequently asked questions.</motion.h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -31,7 +31,6 @@ const FAQ = () => {
               </ul>
             </div>
 
-            {/* Mobile select */}
             <div className="md:hidden">
               <select value={categoryIndex} onChange={(e) => { setCategoryIndex(Number(e.target.value)); setOpenIndex(0); }} className="w-full rounded-lg border p-3">
                 {categories.map((c, idx) => <option key={c.title} value={idx}>{c.title}</option>)}
@@ -39,7 +38,6 @@ const FAQ = () => {
             </div>
           </div>
 
-          {/* Items */}
           <div className="md:col-span-3">
             <div className="space-y-4">
               {currentItems.map((item, idx) => {

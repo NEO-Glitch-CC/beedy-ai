@@ -1,18 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
-import { motion } from 'framer-motion';
 import { ABOUT_SECTION_EN } from '@/lib/constants/en';
-import { AnimatedBeamDemo } from '../widgets/AnimatedBeam';
 import Image from 'next/image';
 import AboutUsImage from "../../assets/images/joel-filipe-VuwAfoHpxgs-unsplash.jpg"
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react'
-
-gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   return (

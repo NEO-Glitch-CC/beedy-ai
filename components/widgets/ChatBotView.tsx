@@ -9,7 +9,7 @@ const ChatBotView = ({ children }: { children: React.ReactNode }) => {
         className="absolute inset-0 z-1 w-full h-full"
         squareSize={6}
         gridGap={6}
-        color="#56d364"
+        color="#dc4fff"
         maxOpacity={0.5}
         flickerChance={0.1}
         height={2160}

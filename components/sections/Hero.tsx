@@ -31,10 +31,12 @@ const Hero = () => {
           </div>
           <div className="w-full pt-6 flex items-center">
             {/* <div className="w-full flex items-center justify-center">
-              <h3 className="text-md font-medium text-center text-neutral-500">{HERO_SECTION_EN.supports}</h3>
-            </div>
-            <MarqueeAnimation /> */}
+            </div> */}
             <AI_Prompt />
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-md font-medium text-center text-neutral-500">{HERO_SECTION_EN.supports}</h3>
+            <MarqueeAnimation />
           </div>
         </div>
       </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import ChatBotView from '../widgets/ChatBotView';
 import Image from 'next/image';
-import ChatbotView from "@/assets/images/BeedyAI.png";
+import AIoption from "@/assets/images/AI option.png";
+import AIprocesses from "@/assets/images/AI Processes.png";
+import VoiceToText from "@/assets/images/Voice to text.png";
+import ChatbotView from "@/assets/images/Beedy AI.png";
 import { FEATURES_EN } from '@/lib/constants/en';
 
 const Features = () => {
   return (
-    <div className='w-full px-[6%] sm:px-[8%] md:px-[12%] space-y-6 py-10'>
+    <div className='w-full px-[6%] sm:px-[8%] md:px-[12%] space-y-20 py-20'>
       <div className="space-y-6 py-4">
         <div className="w-full space-y-4 flex flex-col items-center justify-center">
           <span className="text-md text-neutral-600 font-normal px-4 py-2 rounded-full shadow border-border">Features</span>
@@ -24,14 +27,25 @@ const Features = () => {
           })}
         </div>
       </div>
-      <div className="w-full mx-auto block">
-        <ChatBotView>
-          <div className="relative w-full h-full overflow-hidden">
-            <div className="absolute z-5 inset-x-12 top-12 rounded-t-2xl p-3 bg-white/10 backdrop-blur-xs border border-border">
-              <Image src={ChatbotView} alt='Chatbot View' className="w-full h-auto object-cover rounded-xl border border-border" height={720} width={1080}/>
+      <div className="relative w-full">
+        <div className="absolute z-25 -bottom-5 -left-10 rounded-lg p-3 bg-white/10 backdrop-blur-xs border border-border">
+          <Image src={AIprocesses} alt='AI Processes' className="w-72 h-auto object-cover rounded-lg" height={720} width={720} />
+        </div>
+        <div className="absolute z-25 -top-15 right-1/5 rounded-lg p-3 bg-white/10 backdrop-blur-xs border border-border">
+          <Image src={AIoption} alt='AI Processes' className="w-48 h-auto object-cover rounded-lg" height={720} width={720} />
+        </div>
+        <div className="absolute z-25 bottom-1/6 -right-10 rounded-lg p-3 bg-white/10 backdrop-blur-xs border border-border">
+          <Image src={VoiceToText} alt='AI Processes' className="w-80 h-auto object-cover rounded-lg" height={720} width={720} />
+        </div>
+        <div className="w-full mx-auto block">
+          <ChatBotView>
+            <div className="relative w-full h-full overflow-b-hidden">
+              <div className="absolute z-5 inset-x-12 top-12 rounded-t-2xl p-3 bg-white/10 backdrop-blur-xs border border-border">
+                <Image src={ChatbotView} alt='Chatbot View' className="w-full h-auto object-cover rounded-xl border border-border" height={720} width={1080} />
+              </div>
             </div>
-          </div>
-        </ChatBotView>
+          </ChatBotView>
+        </div>
       </div>
     </div>
   );

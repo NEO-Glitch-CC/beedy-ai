@@ -31,7 +31,7 @@ export default function AI_Prompt() {
   const [value, setValue] = useState("");
   const { textareaRef, adjustHeight } = useAutoResizeTextarea({
     minHeight: 72,
-    maxHeight: 300,
+    maxHeight: 240,
   });
   const [selectedModel, setSelectedModel] = useState("Claude Sonnet 4.5");
 
@@ -44,7 +44,7 @@ export default function AI_Prompt() {
   };
 
   return (
-    <div className="w-full py-4">
+    <div className="w-full max-w-3xl mx-auto block py-4">
       <div className="rounded-2xl bg-neutral-100/10 backdrop-blur-xs border border-border/20 p-1.5 pt-4 dark:bg-white/10">
         <div className="mx-2 mb-2.5 flex items-center gap-2">
           <div className="flex flex-1 items-center gap-2">
