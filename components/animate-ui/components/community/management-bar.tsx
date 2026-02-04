@@ -52,7 +52,7 @@ function ManagementBar() {
                   <motion.span
                     variants={LABEL_VARIANTS}
                     transition={LABEL_TRANSITION}
-                    className="invisible text-sm"
+                    className="invisible text-sm text-foreground font-medium"
                   >
                     {data.title}
                   </motion.span>

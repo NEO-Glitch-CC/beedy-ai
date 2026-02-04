@@ -38,7 +38,7 @@ const Pricing = () => {
 
   return (
     <section className="py-20 min-h-screen bg-background w-full px-[6%] sm:px-[8%] md:px-[12%]">
-      <div className="container mx-auto px-6">
+      <div className="container sm:mx-auto sm:px-6">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold">Choose the right plan for you</h2>
           <p className="mt-3 text-neutral-600">50k+ developers trust us • Cancel any time, without any hassle</p>

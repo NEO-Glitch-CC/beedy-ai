@@ -102,7 +102,7 @@ const Stats = () => {
 
   return (
     <section className="w-full px-[6%] sm:px-[8%] md:px-[12%] py-20">
-      <div className="container mx-auto px-6">
+      <div className="container sm:mx-auto sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-7">
             <h1 className="text-5xl font-bold">{section.title}</h1>
@@ -114,12 +114,12 @@ const Stats = () => {
             </div>
 
             <div className="mt-8 flex gap-2 items-center">
-              {metricKeys.map((m) => (
-                <button key={m.key} onClick={() => setSelectedMetric(m.key)} aria-pressed={m.key === selectedMetric} className={`px-3 py-1 rounded-full text-sm ${m.key === selectedMetric ? 'bg-fuchsia-500 text-white' : 'bg-neutral-100 text-neutral-700'}`}>
-                  {m.label}
-                </button>
-              ))}
-            </div>
+            {metricKeys.map((m) => (
+              <button key={m.key} onClick={() => setSelectedMetric(m.key)} aria-pressed={m.key === selectedMetric} className={`px-3 py-1 rounded-full text-sm ${m.key === selectedMetric ? 'bg-fuchsia-500 text-white' : 'bg-neutral-100 text-neutral-700'}`}>
+                {m.label}
+              </button>
+            ))}
+          </div>
 
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-8">
               {year.items.map((it, idx) => {

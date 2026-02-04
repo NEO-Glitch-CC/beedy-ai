@@ -14,7 +14,7 @@ const FAQ = () => {
 
   return (
     <section className="w-full px-[6%] sm:px-[8%] md:px-[12%] space-y-6 py-20">
-      <div className="container mx-auto px-6">
+      <div className="container sm:mx-auto sm:px-6">
         <motion.h2 initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-3xl font-bold">Frequently asked questions.</motion.h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Categories */}

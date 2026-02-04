@@ -13,12 +13,12 @@ const Features = () => {
       <div className="space-y-6 py-4">
         <div className="w-full space-y-4 flex flex-col items-center justify-center">
           <span className="text-xs text-neutral-600 font-normal px-4 py-1 rounded-full shadow border border-border">Features</span>
-          <h1 className="text-5xl font-semibold text-foreground">Solve Your Biggest Tasks Challenges</h1>
+          <h1 className="text-4xl sm:text-5xl font-semibold text-foreground">Solve Your Biggest Tasks Challenges</h1>
         </div>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           {FEATURES_EN.map((feature, i) => {
             return (
-              <div key={i + 1} className="rounded-lg bg-white shadow border-border p-5 space-y-6">
+              <div key={i + 1} className="rounded-lg bg-white shadow border-border p-5 space-y-2 sm:space-y-6">
                 <feature.icon className='text-yellow-500 size-8' />
                 <h2 className="text-lg font-semibold text-foreground">{feature.title}</h2>
                 <p className="text-sm font-thin text-neutral-800">{feature.description}</p>
@@ -27,7 +27,7 @@ const Features = () => {
           })}
         </div>
       </div>
-      <div className="relative w-full">
+      <div className="hidden md:block relative w-full">
         <div className="absolute z-25 -bottom-5 -left-10 rounded-lg p-3 bg-white/10 backdrop-blur-xs border border-border">
           <Image src={AI_Processes} alt='AI Processes' className="w-72 h-auto object-cover rounded-lg" height={720} width={720} />
         </div>

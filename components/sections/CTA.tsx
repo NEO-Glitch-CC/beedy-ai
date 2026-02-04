@@ -13,7 +13,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 const CTA = () => {
   return (
     <section className="py-16 bg-muted border-y border-border w-full px-[6%] sm:px-[8%] md:px-[12%] ">
-      <div className="container mx-auto px-6">
+      <div className="container sm:mx-auto sm:px-6">
         <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-white border rounded-xl shadow-sm overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Left content */}
