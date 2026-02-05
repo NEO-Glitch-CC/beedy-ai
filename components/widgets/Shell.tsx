@@ -5,12 +5,10 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
 export default function Shell({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="min-h-screen">
-      <Navbar onOpen={() => setOpen(true)} />
-      <Sidebar open={open} onClose={() => setOpen(false)} />
+      <Navbar />
+      <Sidebar />
       <main>{children}</main>
     </div>
   );

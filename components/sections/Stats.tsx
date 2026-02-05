@@ -114,12 +114,12 @@ const Stats = () => {
             </div>
 
             <div className="mt-8 flex gap-2 items-center">
-            {metricKeys.map((m) => (
-              <button key={m.key} onClick={() => setSelectedMetric(m.key)} aria-pressed={m.key === selectedMetric} className={`px-3 py-1 rounded-full text-sm ${m.key === selectedMetric ? 'bg-fuchsia-500 text-white' : 'bg-neutral-100 text-neutral-700'}`}>
-                {m.label}
-              </button>
-            ))}
-          </div>
+              {metricKeys.map((m) => (
+                <button key={m.key} onClick={() => setSelectedMetric(m.key)} aria-pressed={m.key === selectedMetric} className={`px-3 py-1 rounded-full text-sm ${m.key === selectedMetric ? 'bg-fuchsia-500 text-white' : 'bg-neutral-100 text-neutral-700'}`}>
+                  {m.label}
+                </button>
+              ))}
+            </div>
 
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-8">
               {year.items.map((it, idx) => {

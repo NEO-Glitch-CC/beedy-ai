@@ -1,6 +1,46 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+/* Disable default scroll behavior untuk GSAP control */
+html {
+  scroll-behavior: auto !important;
+  overflow-y: scroll;
+  /* Always show scrollbar untuk consistent layout */
+}
+
+/* Prevent scroll jank dengan GPU acceleration */
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enable hardware acceleration untuk semua elements */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Untuk smooth scroll yang optimal */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

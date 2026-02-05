@@ -4,21 +4,34 @@ import React, { useEffect, useRef } from 'react';
 import { NAVBAR_MENU_DATA } from '@/lib/constants';
 import { X } from 'lucide-react';
 import gsap from 'gsap';
+import { useSidebarStore } from '@/lib/store/use-sidebar';
 
-interface SidebarProps {
-  open: boolean;
-  onClose: () => void;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
+const Sidebar = () => {
   const panelRef = useRef<HTMLDivElement | null>(null);
-  const overlayRef = useRef<HTMLDivElement | null>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const sidebarMenuRef = useRef<HTMLLIElement[]>([]);
+  const { isOpen, toggleSidebar } = useSidebarStore();
 
   useEffect(() => {
+    if (!panelRef.current) return;
     tlRef.current = gsap.timeline({ paused: true })
-      .to(overlayRef.current, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' }, 0)
-      .fromTo(panelRef.current, { x: '-100%' }, { x: '0%', duration: 0.35, ease: 'power3.out' }, 0);
+      .fromTo(panelRef.current, {
+        opacity: 0,
+        zIndex: 0
+      }, {
+        opacity: 1,
+        zIndex: 40,
+        duration: 0.15,
+        ease: 'power2.out'
+      }, 0)
+      .fromTo(sidebarMenuRef.current, {
+        opacity: 0,
+      }, {
+        opacity: 1,
+        stagger: 0.05,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
 
     return () => {
       tlRef.current?.kill();
@@ -26,54 +39,27 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   }, []);
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (!isMobile) {
-      if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
-      document.body.style.overflow = '';
-      return;
-    }
+    if (!tlRef.current) return;
 
-    if (open) {
-      if (overlayRef.current) overlayRef.current.style.pointerEvents = 'auto';
-      tlRef.current?.play();
-      document.body.style.overflow = 'hidden';
+    if (isOpen) {
+      tlRef.current.play();
     } else {
-      tlRef.current?.reverse();
-      const t = setTimeout(() => {
-        if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
-      }, 350);
-      document.body.style.overflow = '';
-      return () => clearTimeout(t);
+      tlRef.current.reverse();
     }
-  }, [open]);
-
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = '';
-      if (overlayRef.current) overlayRef.current.style.pointerEvents = 'none';
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [onClose]);
+  }, [isOpen]);
 
   return (
     <div className="md:hidden">
-      <div ref={overlayRef} onClick={onClose} className="fixed inset-0 bg-black/40 opacity-0 pointer-events-none z-40" />
-      <aside ref={panelRef} className="fixed left-0 top-0 bottom-0 w-72 bg-white shadow-xl transform z-50" aria-hidden={!open}>
-        <div className="p-4 border-b flex items-center justify-between">
-          <div className="font-semibold">Menu</div>
-          <button aria-label="Close menu" onClick={onClose}><X /></button>
-        </div>
-        <nav className="p-4">
+      <aside ref={panelRef} className="fixed inset-0 w-full bg-white transform z-0 opacity-0" aria-hidden={!isOpen}>
+        <nav className="px-4 pt-18">
           <ul className="space-y-3">
-            {NAVBAR_MENU_DATA.map((m) => (
-              <li key={m.title}><a href={m.href} className="block px-2 py-2 rounded hover:bg-muted">{m.title}</a></li>
+            {NAVBAR_MENU_DATA.map((m, idx) => (
+              <li ref={(el) => {
+                if (el) sidebarMenuRef.current[idx] = el;
+              }} key={m.title} className='opacity-0'
+              >
+                <a href={m.href} className="block px-2 py-2 rounded hover:bg-muted">{m.title}</a>
+              </li>
             ))}
           </ul>
         </nav>
@@ -82,4 +68,4 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   );
 }
 
-export default Sidebar
+export default Sidebar;

@@ -1,16 +1,13 @@
 "use client";
 
-import React from 'react';
 import Link from 'next/link';
 import { ManagementBar } from '../animate-ui/components/community/management-bar';
 import { Menu } from 'lucide-react';
 import {Button} from "@/components/ui/button";
+import { useSidebarStore } from '@/lib/store/use-sidebar';
 
-interface NavbarProps {
-	onOpen?: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ onOpen }) => {
+const Navbar = () => {
+	const { isOpen, toggleSidebar } = useSidebarStore();
 	return (
 		<nav className="fixed z-50 top-0 inset-x-0 md:p-2">
 			{/* Desktop / large: existing management bar */}
@@ -26,8 +23,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpen }) => {
 					</div>
 					<div className="flex items-center justify-end gap-3">
 
-						<Button variant={'outline'} size={'icon-sm'} aria-label="Open menu" onClick={onOpen} className="">
-							<Menu />
+						<Button variant={'outline'} size={'icon-lg'} aria-label="Open menu" onClick={() => toggleSidebar()} className="">
+							<Menu className='size-5'/>
 						</Button>
 					</div>
 				</div>
