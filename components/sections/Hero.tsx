@@ -9,7 +9,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section className="bg-background relative flex min-h-screen w-full items-center justify-center overflow-hidden border p-6 sm:p-12 md:p-20">
-      {/* <AnimatedGridPattern
+      <AnimatedGridPattern
         numSquares={30}
         maxOpacity={0.3}
         duration={2}
@@ -18,7 +18,7 @@ const Hero = () => {
           "mask-[radial-gradient(1000px_circle_at_center,white,transparent)]",
           "inset-x-0 inset-y-[-30%] h-[200%]"
         )}
-      /> */}
+      />
       <div className="asbolute inset-0 z-20 pt-6 sm:pt-8 bg-transparent">
         <div className="w-full h-full flex flex-col items-center justify-center gap-4 sm:gap-8">
           <div className="max-w-3xl pe-16 sm:p-0 flex flex-col items-start sm:items-center justify-center gap-3">

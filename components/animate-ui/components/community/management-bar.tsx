@@ -7,6 +7,8 @@ import {
 import { motion } from 'motion/react';
 import { BUTTON_MOTION_CONFIG, LABEL_VARIANTS, LABEL_TRANSITION, NAVBAR_MENU_DATA } from '@/lib/constants';
 import { Icons } from '@/lib/constants/icons';
+import BeedyAiLogo from "../../../../assets/icons/logo-beedy-ai-new.svg";
+import Image from 'next/image';
 
 function ManagementBar() {
   return (
@@ -23,7 +25,7 @@ function ManagementBar() {
               className="flex h-auto items-center space-x-2 overflow-hidden whitespace-nowrap rounded-full bg-white shadow-sm dark:bg-neutral-600/80 px-2.5 py-2.5 text-white"
               aria-label={`Beedy AI`}
             >
-              <Icons.beedyAI />
+              <Image src={BeedyAiLogo} alt="Beedy AI Logo" className='size-5' width={20} height={20}/>
               <motion.span
                 variants={LABEL_VARIANTS}
                 transition={LABEL_TRANSITION}
